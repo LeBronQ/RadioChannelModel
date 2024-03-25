@@ -36,9 +36,11 @@ type ChannelModel struct {
 var Scene map[string]ChannelModel
 
 func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode WirelessNode, txPos Position, rxPos Position) {
-	txScene := "LargeCity"
-	LModel := Scene[txScene].LargeScaleModel
-	SModel := Scene[txScene].SmallScaleModel
+	//txScene := "LargeCity"
+	//LModel := Scene[txScene].LargeScaleModel
+	//SModel := Scene[txScene].SmallScaleModel
+	LModel := "FreeSpacePathLossModel"
+	SModel := "NakagamiFadingModel"
 	Distance := calculateDistance3D(txPos, rxPos)
 	Elevation := calculateElevation(txPos, rxPos)
 	Mod := rxNode.Modulation
