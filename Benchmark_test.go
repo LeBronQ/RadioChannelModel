@@ -9,8 +9,9 @@ func PLRCalculation(txPosition Position, rxPosition Position) float64 {
 	distance := calculateDistance3D(txPosition, rxPosition)
 	elevation := calculateElevation(txPosition, rxPosition)
 	PLParam := FreeSpaceParam{
-		Distance:  distance,
-		Frequency: frequency,
+		Distance:     distance,
+		Frequency:    frequency,
+		TXPowerInDbm: 20,
 	}
 	pathLoss := FreeSpacePathLoss(PLParam)
 	FParam := NakagamiParam{

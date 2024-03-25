@@ -58,8 +58,9 @@ func ChannelCalculation(LinkID int64, Distance float64, LargeScaleModel string, 
 	switch LargeScaleModel {
 	case "FreeSpacePathLossModel":
 		PLParam := FreeSpaceParam{
-			Distance:  Distance,
-			Frequency: Frequency,
+			Distance:     Distance,
+			Frequency:    Frequency,
+			TXPowerInDbm: PowerInDbm,
 		}
 		PathLoss = FreeSpacePathLoss(PLParam)
 		break
