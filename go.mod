@@ -1,4 +1,4 @@
-module RadioChannelModel
+module github.com/LeBronQ/RadioChannelModel
 
 go 1.22.1
 
