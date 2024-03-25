@@ -20,7 +20,6 @@ type Position struct {
 }
 
 type WirelessNode struct {
-	ID         int64
 	Frequency  float64
 	BitRate    float64
 	Modulation string
