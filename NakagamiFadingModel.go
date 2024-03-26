@@ -25,7 +25,11 @@ func NakagamiFadingModel(p NakagamiParam) float64 {
 	m := 2.0
 	PowerInWatt := math.Pow(10, (txPowerInDbm-30)/10)
 	UnitGamma := distuv.Gamma{Alpha: m, Beta: PowerInWatt / m}
-	rand := UnitGamma.Rand()
+	sum := 0.0
+	for i := 0; i < 10; i++ {
+		sum += UnitGamma.Rand()
+	}
+	rand := sum / 10.0
 	rxPowerInDbm := 10*math.Log10(rand) + 30.0
 	return rxPowerInDbm
 }
