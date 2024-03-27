@@ -49,7 +49,7 @@ func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode Wirel
 	Frequency := rxNode.Frequency
 	BW := rxNode.BandWidth
 	PLR := ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
-	fmt.Print(PLR)
+	fmt.Printf("%e\n", PLR)
 
 }
 

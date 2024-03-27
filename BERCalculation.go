@@ -17,6 +17,7 @@ type QAMParam struct {
 
 func CalculateBPSKBER(p BPSKParam) float64 {
 	BandwidthInHz, SNR, BitRate := p.Bandwidth, p.SNR, p.BitRate
+	SNR = math.Pow(10, SNR/10.0)
 	EbN0 := SNR * BandwidthInHz / BitRate
 	BER := 0.5 * math.Erfc(math.Sqrt(EbN0))
 	return BER
