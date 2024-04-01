@@ -1,6 +1,7 @@
 package RadioChannelModel
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -47,8 +48,8 @@ func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode Wirel
 	BR := rxNode.BitRate
 	Frequency := rxNode.Frequency
 	BW := rxNode.BandWidth
-	_ = ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
-	//fmt.Printf("%e\n", PLR)
+	PLR := ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
+	fmt.Printf("%e\n", PLR)
 
 }
 
