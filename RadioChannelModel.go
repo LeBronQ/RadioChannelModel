@@ -34,7 +34,7 @@ type ChannelModel struct {
 
 var Scene map[string]ChannelModel
 
-func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode WirelessNode, txPos Position, rxPos Position) {
+func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode WirelessNode, txPos Position, rxPos Position) float64 {
 	//txScene := "LargeCity"
 	//LModel := Scene[txScene].LargeScaleModel
 	//SModel := Scene[txScene].SmallScaleModel
@@ -50,8 +50,8 @@ func ChannelParameterCalculation(LinkID int64, txNode WirelessNode, rxNode Wirel
 	/*
 		PLR := ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
 		fmt.Printf("%e\n", PLR)*/
-	_ = ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
-
+	PLR := ChannelCalculation(LinkID, Distance, LModel, SModel, Frequency, BR, Mod, Elevation, BW, M, txNode.PowerInDbm)
+	return PLR
 }
 
 func ChannelCalculation(LinkID int64, Distance float64, LargeScaleModel string, SmallScaleModel string, Frequency float64, BitRate float64, Mod string, Elevation float64, BW float64, M float64, PowerInDbm float64) float64 {
