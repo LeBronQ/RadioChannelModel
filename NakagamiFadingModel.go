@@ -1,6 +1,7 @@
 package RadioChannelModel
 
 import (
+	"fmt"
 	"github.com/gonum/stat/distuv"
 	"math"
 )
@@ -25,11 +26,10 @@ func NakagamiFadingModel(p NakagamiParam) float64 {
 	m := 2.0
 	PowerInWatt := math.Pow(10, (txPowerInDbm-30)/10)
 	UnitGamma := distuv.Gamma{Alpha: m, Beta: m / PowerInWatt}
-	sum := 0.0
-	for i := 0; i < 10; i++ {
-		sum += UnitGamma.Rand()
+	if UnitGamma.Beta <= 0 {
+		fmt.Println(UnitGamma.Beta <= 0)
 	}
-	rand := sum / 10.0
+	rand := UnitGamma.Rand()
 	rxPowerInDbm := 10*math.Log10(rand) + 30.0
 	return rxPowerInDbm
 }
