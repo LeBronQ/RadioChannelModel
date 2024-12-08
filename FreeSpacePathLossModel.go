@@ -1,6 +1,9 @@
 package RadioChannelModel
 
-import "math"
+import (
+	"fmt"
+	"math"
+)
 
 type FreeSpaceParam struct {
 	Distance     float64
@@ -9,7 +12,12 @@ type FreeSpaceParam struct {
 }
 
 func FreeSpacePathLoss(p FreeSpaceParam) float64 {
-	wavelength := c / p.Frequency
-	fspl := 20.0 * math.Log10((4*π*p.Distance)/wavelength)
-	return p.TXPowerInDbm - fspl
+	if p.Distance == 0 {
+		fmt.Printf("Distance is 0, no path loss")
+		return p.TXPowerInDbm
+	} else {
+		wavelength := c / p.Frequency
+		fspl := 20.0 * math.Log10((4*π*p.Distance)/wavelength)
+		return p.TXPowerInDbm - fspl
+	}
 }

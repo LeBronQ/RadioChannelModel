@@ -22,7 +22,7 @@ func LogDistancePathLoss(p LogDistanceParam) float64 {
 	pl0 := 10.0 * 2.0 * math.Log10((4*π*d0)/wavelength)
 	if scenario == "open_field" {
 		n = 2.0
-		sigma = 3.0
+		sigma = 0.
 		if frequency >= 3.1e+9 && frequency <= 5.3e+9 {
 			if foliage == 0 {
 				if txHeight < 1.0 {
@@ -34,7 +34,7 @@ func LogDistancePathLoss(p LogDistanceParam) float64 {
 				}
 			} else {
 				n = 2.6471
-				sigma = 3.06
+				sigma = 3.37
 			}
 		}
 	} else if scenario == "urban" {
@@ -46,6 +46,16 @@ func LogDistancePathLoss(p LogDistanceParam) float64 {
 		} else if frequency >= 5.03e+9 && frequency <= 5.091e+9 {
 			n = 2.0
 			sigma = 3.2
+		}
+	} else if scenario == "suburban" {
+		n = 3.0
+		sigma = 3.0
+		if frequency >= 9.0e+8 && frequency <= 1.2e+9 {
+			n = 1.7
+			sigma = 3.1
+		} else if frequency >= 5.03e+9 && frequency <= 5.091e+9 {
+			n = 1.5
+			sigma = 2.9
 		}
 	} else if scenario == "shadowed_urban" {
 		n = 4.0

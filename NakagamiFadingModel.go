@@ -29,8 +29,11 @@ func NakagamiFadingModel(p NakagamiParam) float64 {
 	if UnitGamma.Beta <= 0 {
 		fmt.Println("TXPowerInDbm:", p.TXPowerInDbm)
 		fmt.Println("PowerInWatt:", PowerInWatt)
+		fmt.Println("Receive power is infinite, return TXPowerInDbm")
+		return p.TXPowerInDbm
+	} else {
+		rand := UnitGamma.Rand()
+		rxPowerInDbm := 10*math.Log10(rand) + 30.0
+		return rxPowerInDbm
 	}
-	rand := UnitGamma.Rand()
-	rxPowerInDbm := 10*math.Log10(rand) + 30.0
-	return rxPowerInDbm
 }
